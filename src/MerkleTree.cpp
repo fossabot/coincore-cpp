@@ -32,6 +32,9 @@
 
 using namespace Coin;
 
+// https://stackoverflow.com/questions/5004858/stdmin-gives-error
+using std::min; // fix conflict with min macro on windows
+
 ///////////////////////////////////////////////////////////////////////////////
 //
 // class MerkleTree implementation
@@ -75,7 +78,7 @@ std::string PartialMerkleTree::toIndentedString(bool showIndices) const
     ss << "merkleHashes: " << std::endl;
     unsigned int i = 0;
     for (auto& hash: merkleHashes_) {
-        ss << "  " << i++ << ": " << uchar_vector(hash).getReverse().getHex() << std::endl; 
+        ss << "  " << i++ << ": " << uchar_vector(hash).getReverse().getHex() << std::endl;
     }
 
     ss << "txHashes: " << std::endl;
@@ -116,7 +119,7 @@ void PartialMerkleTree::setCompressed(unsigned int nTxs, const std::vector<uchar
     std::queue<uchar_vector> hashQueue;
     for (auto& hash: hashes) { hashQueue.push(hash); }
 
-    std::queue<bool> bitQueue; 
+    std::queue<bool> bitQueue;
     for (auto& flag: flags) {
         for (unsigned int i = 0; i < 8; i++) {
             bool bit = ((flag >> i) & (unsigned char)0x01);
@@ -224,7 +227,7 @@ void PartialMerkleTree::setUncompressed(const std::vector<MerkleLeaf>& leaves, s
     // We want to partition the leaves into a left set that contains 2^depth elemments
     // and a right set with the remainder. If we have 2^depth or fewer total leaves, we need to duplicate
     // the subtree merkle hash to compute the merkle hash but we only include the hashes, txids, and bits one time.
-    std::size_t partitionPos = std::min((std::size_t)1 << depth, end - begin);
+    std::size_t partitionPos = min((std::size_t)1 << depth, end - begin);
     PartialMerkleTree leftSubtree;
     leftSubtree.setUncompressed(leaves, begin, begin + partitionPos, depth);
 
@@ -251,7 +254,7 @@ void PartialMerkleTree::setUncompressed(const std::vector<MerkleLeaf>& leaves, s
         merkleHashes_.clear();
         merkleHashes_.push_front(root_);
         bits_.clear();
-        bits_.push_front(false);     
+        bits_.push_front(false);
     }
     else {
         bits_.push_front(true);
@@ -381,7 +384,7 @@ void PartialMerkleTree::merge(std::queue<uchar_vector>& hashQueue1, std::queue<u
     {
         std::stringstream error;
         error << "PartialMerkleTree::merge - inner nodes do not match: " << root.getHex() << ", " << hashQueue2.front().getReverse().getHex();
-        
+
         throw std::runtime_error(error.str());
     }
 
@@ -399,7 +402,7 @@ uchar_vector PartialMerkleTree::getFlags() const
         if (byteCounter == 8) {
             flags.push_back(byte);
             byteCounter = 0;
-            byte = 0;            
+            byte = 0;
         }
         if (bit) byte |= ((unsigned char)1 << byteCounter);
         byteCounter++;
@@ -416,7 +419,7 @@ void PartialMerkleTree::updateTxIndices()
     unsigned int i = 0;
     for (auto& hash: merkleHashes_)
     {
-        if (txHashesSet.count(hash)) { txIndices_.push_back(i); } 
+        if (txHashesSet.count(hash)) { txIndices_.push_back(i); }
         i++;
     }
 }
@@ -437,6 +440,6 @@ PartialMerkleTree Coin::randomPartialMerkleTree(const std::vector<uchar_vector>&
 
     PartialMerkleTree tree;
     tree.setUncompressed(leaves);
-    return tree;    
+    return tree;
 }
 

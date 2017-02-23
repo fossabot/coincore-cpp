@@ -38,7 +38,9 @@
 
 #include <stdio.h>
 #include <cstring>
-#include <unistd.h>
+#ifndef _WIN32
+  #include <unistd.h>
+#endif
 #include <stdint.h>
 #include <sstream>
 #include <time.h>

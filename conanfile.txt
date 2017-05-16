@@ -1,9 +1,5 @@
-# Temporary - move this to it separate package repo
-
 [requires]
 Boost/1.60.0@lasote/stable
-
-[requires]
 OpenSSL/1.0.2j@lasote/stable
 
 [generators]

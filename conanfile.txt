@@ -1,6 +1,0 @@
-[requires]
-Boost/1.60.0@lasote/stable
-OpenSSL/1.0.2j@lasote/stable
-
-[generators]
-cmake

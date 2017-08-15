@@ -2,7 +2,7 @@ import os
 import shutil
 from base import CoinCoreBase
 
-class CoinCoreTesting(CoinCoreBase):
+class CoinCoreRelease(CoinCoreBase):
     exports = "base.py"
 
     exports_sources = "../sources*"

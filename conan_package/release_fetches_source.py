@@ -2,7 +2,7 @@ from base import CoinCoreBase
 
 # Use this recipe when creating recipies for stable channel
 
-class CoinCoreStable(CoinCoreBase):
+class CoinCoreRelease(CoinCoreBase):
     exports = "base.py"
 
     # make extra sure no sources are exported by base package

@@ -9,5 +9,5 @@ class CoinCoreRelease(CoinCoreBase):
     exports_sources = ""
 
     def source(self):
-        self.run("git clone %s repo" % self.git_repo)
+        self.run("git clone %s repo" % self.repo_ssh_url)
         self.run("cd repo && git checkout v%s" % self.version)

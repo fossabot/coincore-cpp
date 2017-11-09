@@ -1,5 +1,6 @@
-
 # CoinCore
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fmnaamani%2Fcoincore-cpp.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fmnaamani%2Fcoincore-cpp?ref=badge_shield)
+
 
 The core crypto library ported from [mSIGNA](https://github.com/ciphrex/mSIGNA) for managing bitcoin data structures.
 
@@ -55,3 +56,7 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fmnaamani%2Fcoincore-cpp.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fmnaamani%2Fcoincore-cpp?ref=badge_large)

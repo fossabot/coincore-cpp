@@ -3,9 +3,10 @@ import os
 
 class CoinCoreBase(ConanFile):
     name = "CoinCore"
-    version="0.1.1"
+    version="0.1.2"
     url = "https://github.com/JoyStream/coincore-cpp.git"
-    git_repo = "git@github.com:JoyStream/coincore-cpp.git"
+    repo_https_url = "https://github.com/JoyStream/coincore-cpp.git"
+    repo_ssh_url = "git@github.com:JoyStream/coincore-cpp.git"
 
     # mSIGNA CoinCore license
     license = '''
